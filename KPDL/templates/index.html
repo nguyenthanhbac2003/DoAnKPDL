@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhận Diện Ảnh với YOLOv8</title>
+</head>
+<body>
+    <h1>Nhận Diện Ảnh với YOLOv8</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Nhận Diện</button>
+    </form>
+
+    {% if original and detected %}
+        <h2>Ảnh Gốc</h2>
+        <img src="{{ original }}" width="400">
+
+        <h2>Ảnh Nhận Diện</h2>
+        <img src="{{ detected }}" width="400">
+
+        <h2>Kết Quả Nhận Diện</h2>
+        <ul>
+            {% for label, confidence in labels %}
+                <li><strong>{{ label }}</strong> - Độ chính xác: {{ confidence }}%</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Thông Tin Đối Tượng Chính</h2>
+        <p><strong>Đối tượng:</strong> {{ main_label }}</p>
+        <p><strong>Độ chính xác:</strong> {{ main_conf }}%</p>
+        <p><strong>Mô tả:</strong> {{ description }}</p>
+    {% endif %}
+</body>
+</html>

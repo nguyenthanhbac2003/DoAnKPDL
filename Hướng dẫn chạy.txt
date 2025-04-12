@@ -1,0 +1,5 @@
+cd "C:\Users\LAPTOP 1997\Desktop\KPDL"
+python -m venv yolov8_env
+yolov8_env\Scripts\activate.bat
+pip install flask
+python app.py
